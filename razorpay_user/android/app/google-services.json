@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "73825436579",
+    "project_id": "razorpay-ftx-hackathon",
+    "storage_bucket": "razorpay-ftx-hackathon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73825436579:android:57856acbc06b34b7fd5016",
+        "android_client_info": {
+          "package_name": "com.trios.razorpay_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73825436579-3dsd4klrmcl1qhkt32i0j4b5qltsb9j7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-CR-xhBuCSqT09uluoWBn7O20gmzpDcA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73825436579-3dsd4klrmcl1qhkt32i0j4b5qltsb9j7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
