@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:razorpay_user/Providers/cart.dart';
+import 'package:razorpay_user/Providers/food_items.dart';
 import 'package:razorpay_user/Screens/home_screen.dart';
 
 void main() async {
@@ -13,15 +16,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => FoodItems(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Cart(),
+        ),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: Home.pg,
+        routes: {
+          Home.pg: (ctx) => const Home(),
+        },
       ),
-      initialRoute: Home.pg,
-      routes: {
-        Home.pg: (ctx) => const Home(),
-      },
     );
   }
 }

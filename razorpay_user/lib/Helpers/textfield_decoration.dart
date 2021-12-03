@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:razorpay_user/Helpers/colors.dart';
+import 'package:razorpay_user/Helpers/style.dart';
 
 class TextFieldDecoration {
   static InputDecoration rRectDecoration({
     final width,
     String? hint,
+    String? label,
   }) {
     return InputDecoration(
       hintText: hint,
+      labelText: label,
+      labelStyle: greenText,
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
           width * 0.018,

@@ -80,31 +80,29 @@ class _ProfileState extends State<Profile> {
                   children: [
                     TextFormField(
                       decoration: TextFieldDecoration.rRectDecoration(
-                        hint: 'Name',
+                        label: 'Name',
                         width: width,
                       ),
+                      initialValue: 'John',
                       readOnly: true,
                     ),
                     SizedBox(height: width * 0.06),
                     TextFormField(
                       decoration: TextFieldDecoration.rRectDecoration(
-                        hint: 'Phone No.',
+                        label: 'Phone No.',
                         width: width,
                       ),
+                      initialValue: '+91 9876556344',
                       readOnly: true,
                     ),
                     SizedBox(height: width * 0.06),
                     TextFormField(
                       decoration: TextFieldDecoration.rRectDecoration(
-                        hint: 'Address',
+                        label: 'Address',
                         width: width,
                       ),
+                      initialValue: 'No 5, T. Nagar, Chennai',
                       readOnly: true,
-                    ),
-                    SizedBox(height: width * 0.03),
-                    SolidButton(
-                      name: 'Update',
-                      onPressed: () {},
                     ),
                     SizedBox(height: width * 0.03),
                   ],

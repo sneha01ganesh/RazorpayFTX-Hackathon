@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:razorpay_user/Helpers/colors.dart';
 import 'package:razorpay_user/Helpers/custom_icons.dart';
+import 'package:razorpay_user/Providers/cart.dart';
 import 'package:razorpay_user/Screens/home_screen.dart';
 
 //ignore: must_be_immutable
@@ -107,6 +109,47 @@ class _HomeScaffoldState extends State<HomeScaffold> {
                   ),
                   onPressed: widget.onDrawerPressed,
                 ),
+                widget.ordersIcon == true
+                    ? Consumer<Cart>(
+                        builder: (context, cart, child) => GestureDetector(
+                          onTap: () {},
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Stack(
+                                children: [
+                                  child ?? Container(),
+                                  cart.totalCartItems > 0
+                                      ? Positioned(
+                                          top: 0,
+                                          right: 0,
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              color: Color(0xFFE52323),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            height: width * 0.017,
+                                            width: width * 0.017,
+                                          ),
+                                        )
+                                      : Container(),
+                                ],
+                              ),
+                              const Text('Cart'),
+                            ],
+                          ),
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.all(width * 0.01),
+                          child: Icon(
+                            CustomIcons.orders,
+                            color: green,
+                            size: width * 0.047,
+                          ),
+                        ),
+                      )
+                    : Container(),
               ],
             ),
           ),

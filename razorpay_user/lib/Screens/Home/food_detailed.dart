@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:razorpay_user/Helpers/style.dart';
 import 'package:razorpay_user/Models/food_model.dart';
@@ -80,11 +82,11 @@ class _FoodDetailedState extends State<FoodDetailed> {
                 ),
               ),
             ),
-            const Align(
+            Align(
               alignment: Alignment.centerRight,
               child: Text(
-                '₹150',
-                style: TextStyle(
+                '₹${widget.foodModel!.price ?? ""}',
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
