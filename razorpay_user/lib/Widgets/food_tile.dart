@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:razorpay_user/Helpers/colors.dart';
 import 'package:razorpay_user/Models/food_model.dart';
+import 'package:razorpay_user/Screens/Home/food_detailed.dart';
 
 class FoodTile extends StatelessWidget {
   const FoodTile({
     Key? key,
     this.foodModel,
-    this.open,
   }) : super(key: key);
 
   final FoodModel? foodModel;
-  final bool? open;
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
     return GestureDetector(
-      onTap: open == true
-          ? () {
-              // Navigator.pushNamed(context, FoodDetailed.pg,
-              //     arguments: foodModel.id);
-            }
-          : null,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FoodDetailed(
+              foodModel: foodModel,
+            ),
+          ),
+        );
+      },
       child: Stack(
         children: [
           Container(
@@ -128,16 +131,15 @@ class FoodTile extends StatelessWidget {
                       aspectRatio: 1 / 1,
                       child: ClipOval(
                         child: ColorFiltered(
-                          colorFilter:
-                              foodModel!.availability == 0 || open == false
-                                  ? ColorFilter.mode(
-                                      Colors.grey[100] ?? Colors.grey,
-                                      BlendMode.saturation,
-                                    )
-                                  : const ColorFilter.mode(
-                                      Colors.transparent,
-                                      BlendMode.multiply,
-                                    ),
+                          colorFilter: foodModel!.availability == 0
+                              ? ColorFilter.mode(
+                                  Colors.grey[100] ?? Colors.grey,
+                                  BlendMode.saturation,
+                                )
+                              : const ColorFilter.mode(
+                                  Colors.transparent,
+                                  BlendMode.multiply,
+                                ),
                           child: Image.network(
                             foodModel!.imageUrl ?? "",
                             fit: BoxFit.cover,

@@ -34,7 +34,7 @@ class _HomeScaffoldState extends State<HomeScaffold> {
             height: width * 0.1,
             alignment: Alignment.centerLeft,
             child: Text(
-              'Address',
+              'No 5, T. Nagar, Chennai',
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,

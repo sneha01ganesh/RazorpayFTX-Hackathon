@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:razorpay_user/Helpers/colors.dart';
 import 'package:razorpay_user/Helpers/custom_icons.dart';
-import 'package:razorpay_user/Screens/homepage_screen.dart';
+import 'package:razorpay_user/Screens/Home/homepage_screen.dart';
 import 'package:razorpay_user/Screens/profile_screen.dart';
 import 'package:razorpay_user/Screens/recents_screen.dart';
 import 'package:razorpay_user/Widgets/drawer_widget.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:razorpay_user/Helpers/colors.dart';
+import 'package:razorpay_user/Screens/Home/home_tabs.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,24 +20,17 @@ class _HomeScreenState extends State<HomeScreen> {
         Column(
           children: [
             Text(
-              'Gowthama Home Food',
+              'Shadow Galley',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: darkGreen,
                 fontSize: width * 0.05,
               ),
             ),
-            Text(
-              'Since 2001',
-              style: TextStyle(
-                color: darkGreen,
-                fontSize: width * 0.043,
-              ),
-            ),
             SizedBox(height: width * 0.05),
-            // Expanded(
-            //   child: HomeTabs(),
-            // ),
+            const Expanded(
+              child: HomeTabs(),
+            ),
           ],
         ),
       ],
