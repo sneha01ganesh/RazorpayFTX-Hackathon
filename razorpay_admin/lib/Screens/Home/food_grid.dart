@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:razorpay_admin/Providers/food_items.dart';
 import 'package:razorpay_admin/Widgets/dialogs.dart';
 import 'package:razorpay_admin/Widgets/food_tile.dart';
 
@@ -51,32 +52,32 @@ class _FoodGridState extends State<FoodGrid> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    // final provider = Provider.of<FoodItems>(context);
+    final provider = Provider.of<FoodItems>(context);
 
-    // switch (widget.type) {
-    //   case 'Breakfast':
-    //     {
-    //       _foodList = provider.breakfastItems;
-    //     }
-    //     break;
+    switch (widget.type) {
+      case 'Breakfast':
+        {
+          _foodList = provider.breakfastItems;
+        }
+        break;
 
-    //   case 'Lunch':
-    //     {
-    //       _foodList = provider.lunchItems;
-    //     }
-    //     break;
-    //   case 'Dinner':
-    //     {
-    //       _foodList = provider.dinnerItems;
-    //     }
-    //     break;
+      case 'Lunch':
+        {
+          _foodList = provider.lunchItems;
+        }
+        break;
+      case 'Dinner':
+        {
+          _foodList = provider.dinnerItems;
+        }
+        break;
 
-    //   default:
-    //     {
-    //       _foodList = provider.specialItems;
-    //     }
-    //     break;
-    // }
+      default:
+        {
+          _foodList = provider.specialItems;
+        }
+        break;
+    }
 
     return Column(
       children: [
