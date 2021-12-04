@@ -20,4 +20,8 @@ Shadow Galley is a mobile app which aims to serve home foods to consumers by app
 
 It is integrated with Razorpay as Payment Gateway which is convenient for both users and sellers.
 
+ - > App Credentials :
 
+Admin Passcode : 1234
+Delivery Partner Ph.No : 9876543210
+Delivery Partner Passcode : 123456
