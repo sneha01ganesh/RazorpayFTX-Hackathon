@@ -36,36 +36,36 @@ class _DeliveryHomeState extends State<DeliveryHome> {
         context, LandingPage.pg, (route) => false);
   }
 
-  // var _isInit = true;
-  // var _isLoading = false;
+  var _isInit = true;
+  var _isLoading = false;
 
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
-  //   if (_isInit &&
-  //       !Provider.of<DeliveryOrders>(context, listen: false).listFetched) {
-  //     setState(() {
-  //       _isLoading = true;
-  //     });
+    if (_isInit &&
+        !Provider.of<DeliveryOrders>(context, listen: false).listFetched) {
+      setState(() {
+        _isLoading = true;
+      });
 
-  //     Provider.of<DeliveryOrders>(context, listen: false)
-  //         .fetchOrders()
-  //         .then((value) {
-  //       setState(() {
-  //         _isLoading = false;
-  //       });
-  //     }).catchError((e) {
-  //       setState(() {
-  //         _isLoading = false;
-  //       });
+      Provider.of<DeliveryOrders>(context, listen: false)
+          .fetchOrders()
+          .then((value) {
+        setState(() {
+          _isLoading = false;
+        });
+      }).catchError((e) {
+        setState(() {
+          _isLoading = false;
+        });
 
-  //       dialogs.error(context: context);
-  //     });
-  //   }
+        dialogs.error(context: context);
+      });
+    }
 
-  //   _isInit = false;
-  // }
+    _isInit = false;
+  }
 
   @override
   Widget build(BuildContext context) {
