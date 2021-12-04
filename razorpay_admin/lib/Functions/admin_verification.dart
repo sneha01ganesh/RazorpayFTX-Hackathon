@@ -3,26 +3,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AdminVerification {
   static Future<bool> login(int enteredPin) async {
-    // UserCredential auth = await FirebaseAuth.instance.signInAnonymously();
+    UserCredential auth = await FirebaseAuth.instance.signInAnonymously();
 
-    // CollectionReference _firestore =
-    //     FirebaseFirestore.instance.collection('Extras');
+    CollectionReference _firestore =
+        FirebaseFirestore.instance.collection('Extras');
 
-    // bool correctPassword;
+    bool correctPassword;
 
     try {
-      //   DocumentSnapshot docSnap = await _firestore.doc('AdminPasscode').get();
+      DocumentSnapshot docSnap = await _firestore.doc('AdminPasscode').get();
 
-      //   int passcode = docSnap.get('passcode');
+      int passcode = docSnap.get('passcode');
 
-      //   if (enteredPin == passcode) {
-      //     correctPassword = true;
-      //   } else {
-      //     correctPassword = false;
-      //   }
+      if (enteredPin == passcode) {
+        correctPassword = true;
+      } else {
+        correctPassword = false;
+      }
 
-      //   return correctPassword;
-      return true;
+      return correctPassword;
     } catch (e) {
       rethrow;
     }

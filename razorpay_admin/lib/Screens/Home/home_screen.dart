@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:razorpay_admin/Helpers/colors.dart';
+import 'package:razorpay_admin/Screens/Forms/add_edit_dish.dart';
 import 'package:razorpay_admin/Screens/Home/home_tabs.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -36,12 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: width * 0.07),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => AddEditDish(addPage: true),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AddEditDish(addPage: true),
+                      ),
+                    );
                   },
                   child: Material(
                     shape: const CircleBorder(side: BorderSide.none),
