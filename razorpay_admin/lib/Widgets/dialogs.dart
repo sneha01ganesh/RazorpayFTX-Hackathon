@@ -126,5 +126,38 @@ class Dialogs {
     );
   }
 
+  Future<void> yesNoDialog(
+    context, {
+    String title = 'Are you sure',
+    @required String? content,
+    String leftBtn = 'No',
+    String rightBtn = 'Yes',
+    @required VoidCallback? yesFn,
+  }) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        final width = MediaQuery.of(context).size.width;
+
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(width * 0.02)),
+          title: Text(title),
+          content: Text(content ?? ''),
+          actions: [
+            TextButton(
+              child: Text(leftBtn),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            TextButton(
+              child: Text(rightBtn),
+              onPressed: yesFn,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   dismiss(context) => Navigator.of(context).pop();
 }

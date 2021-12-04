@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:razorpay_admin/Providers/admin_orders.dart';
 import 'package:razorpay_admin/Providers/delivery_orders.dart';
 import 'package:razorpay_admin/Providers/food_items.dart';
 import 'package:razorpay_admin/Screens/DeliveryPartner/delivery_details_page.dart';
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => FoodItems(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AdminOrders(),
         ),
       ],
       child: MaterialApp(

@@ -3,7 +3,7 @@ import 'package:razorpay_admin/Helpers/colors.dart';
 import 'package:razorpay_admin/Helpers/custom_icons.dart';
 import 'package:razorpay_admin/Screens/Home/home_screen.dart';
 import 'package:razorpay_admin/Screens/admin_delivery.dart';
-import 'package:razorpay_admin/Screens/requests.dart';
+import 'package:razorpay_admin/Screens/Requests/requests.dart';
 import 'package:razorpay_admin/Widgets/appbar_widget.dart';
 import 'package:razorpay_admin/Widgets/drawer_widget.dart';
 
