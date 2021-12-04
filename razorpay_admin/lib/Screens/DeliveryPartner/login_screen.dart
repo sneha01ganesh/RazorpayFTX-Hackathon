@@ -287,6 +287,12 @@ class _LoginScreenState extends State<LoginScreen>
                           ),
                         )
                       : Container(),
+                  const Text(
+                    'Sample Credentials --> Phone - 9876543210,\nOTP - 123456',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  SizedBox(height: width * 0.02),
                   LoginButton(
                     text: _phoneVerified ? 'Login' : 'Verify',
                     onPressed: _phoneVerified ? manualOtp : verify,

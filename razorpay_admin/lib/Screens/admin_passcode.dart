@@ -74,6 +74,8 @@ class _AdminPasscodeState extends State<AdminPasscode> {
                     textInputAction: TextInputAction.done,
                   ),
                 ),
+                SizedBox(height: width * 0.01),
+                const Text('Hint -> Passcode = 1234'),
                 SizedBox(height: width * 0.05),
                 LoginButton(
                   text: 'Enter',

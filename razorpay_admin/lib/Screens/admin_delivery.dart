@@ -5,6 +5,7 @@ import 'package:razorpay_admin/Providers/admin_orders.dart';
 import 'package:razorpay_admin/Providers/delivery_persons.dart';
 import 'package:razorpay_admin/Widgets/admin_delivery_card.dart';
 import 'package:razorpay_admin/Widgets/dialogs.dart';
+import 'package:razorpay_admin/Widgets/shimmer.dart';
 
 class AdminDelivery extends StatefulWidget {
   static const pg = 'adminDelivery';
@@ -58,18 +59,20 @@ class _AdminDeliveryState extends State<AdminDelivery> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Container(
-        alignment: Alignment.center,
-        child: ListView(
-          padding: EdgeInsets.symmetric(
-            horizontal: width * 0.05,
-          ),
-          children: const [
-            PendingDelivery(),
-            CompletedDelivery(),
-          ],
-        ),
-      ),
+      body: _isLoading
+          ? RequestsShimmer()
+          : Container(
+              alignment: Alignment.center,
+              child: ListView(
+                padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.05,
+                ),
+                children: const [
+                  PendingDelivery(),
+                  CompletedDelivery(),
+                ],
+              ),
+            ),
     );
   }
 }
