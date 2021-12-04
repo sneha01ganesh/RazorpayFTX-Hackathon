@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.trios.razorpay_user">
    <application
-        android:label="razorpay_user"
+        android:label="Shadow Galley"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
