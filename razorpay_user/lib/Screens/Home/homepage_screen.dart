@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: darkGreen,
-                fontSize: width * 0.05,
+                fontSize: width * 0.055,
               ),
             ),
             SizedBox(height: width * 0.05),

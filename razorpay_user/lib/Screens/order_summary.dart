@@ -30,6 +30,8 @@ class _OrderSummaryState extends State<OrderSummary> {
   Dialogs dialogs = Dialogs();
   late Razorpay _razorPay;
 
+  Object? _selectedRadio = 0;
+
   void proceedToOrder() {
     if (cod == false) {
       pay();
@@ -44,7 +46,7 @@ class _OrderSummaryState extends State<OrderSummary> {
     await PlaceOrder()
         .placeFood(
       context,
-      address: 'No 5, T. Nagar, Chennai',
+      address: 'AMC Enclave, No. 6, Third Cross Street, Sterling Road',
       deliveryCharges: 30,
       paymentId: paymentId,
       paymentType: cod == false ? 'Online Payment' : null,
@@ -255,7 +257,8 @@ class _OrderSummaryState extends State<OrderSummary> {
                         ),
                         SizedBox(width: width * 0.03),
                         Container(
-                          child: const Text('Address'),
+                          child: const Text(
+                              'AMC Enclave, No. 6, Third Cross Street, Sterling Road'),
                           constraints: BoxConstraints(maxWidth: width * 0.615),
                         ),
                         IconButton(
@@ -269,9 +272,10 @@ class _OrderSummaryState extends State<OrderSummary> {
                       ],
                     ),
                   ),
+                  SizedBox(height: width * 0.025),
                   CheckboxListTile(
                     title: Text(
-                      'Pay via Cash on Delivery',
+                      'Pay via Cash',
                       style: TextStyle(
                         fontSize: width * 0.035,
                       ),
@@ -284,6 +288,41 @@ class _OrderSummaryState extends State<OrderSummary> {
                         cod = value;
                       });
                     },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Text('Delivery'),
+                          Radio(
+                            value: 0,
+                            groupValue: _selectedRadio,
+                            onChanged: (value) {
+                              setState(() {
+                                _selectedRadio = value;
+                              });
+                            },
+                            activeColor: green,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text('Takeaway'),
+                          Radio(
+                            value: 1,
+                            groupValue: _selectedRadio,
+                            onChanged: (value) {
+                              setState(() {
+                                _selectedRadio = value;
+                              });
+                            },
+                            activeColor: green,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   SizedBox(height: width * 0.1),
                   Row(

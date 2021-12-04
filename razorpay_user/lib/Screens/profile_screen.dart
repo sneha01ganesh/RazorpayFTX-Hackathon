@@ -49,7 +49,8 @@ class _ProfileState extends State<Profile> {
                 color: Colors.grey[300],
                 shape: BoxShape.circle,
                 image: const DecorationImage(
-                  image: AssetImage('images/Avatar1.png'),
+                  image: NetworkImage(
+                      'https://www.wallpapertip.com/wmimgs/159-1592363_full-hd-girls-hd.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -83,7 +84,7 @@ class _ProfileState extends State<Profile> {
                         label: 'Name',
                         width: width,
                       ),
-                      initialValue: 'John',
+                      initialValue: 'Jose',
                       readOnly: true,
                     ),
                     SizedBox(height: width * 0.06),
@@ -101,7 +102,8 @@ class _ProfileState extends State<Profile> {
                         label: 'Address',
                         width: width,
                       ),
-                      initialValue: 'No 5, T. Nagar, Chennai',
+                      initialValue:
+                          'AMC Enclave, No. 6, Third Cross Street, Sterling Road',
                       readOnly: true,
                     ),
                     SizedBox(height: width * 0.03),

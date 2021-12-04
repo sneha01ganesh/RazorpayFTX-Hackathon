@@ -110,13 +110,13 @@ class _FoodDetailedState extends State<FoodDetailed> {
               Text(
                 'Delivered on all days between ${infoStartTime(widget.foodModel!.type ?? "")} and ${infoEndTime(widget.foodModel!.type ?? "")}. Pleace check for delivery charges if applicable.',
               ),
-              SizedBox(height: width * 0.04),
-              Text(
-                'Description',
-                style: greenBoldText.copyWith(fontSize: width * 0.04),
-              ),
-              SizedBox(height: width * 0.01),
-              Text(widget.foodModel!.description ?? ""),
+              // SizedBox(height: width * 0.04),
+              // Text(
+              //   'Description',
+              //   style: greenBoldText.copyWith(fontSize: width * 0.04),
+              // ),
+              // SizedBox(height: width * 0.01),
+              // Text(widget.foodModel!.description ?? ""),
               SizedBox(height: width * 0.04),
               widget.foodModel!.combo == true
                   ? Column(

@@ -37,7 +37,7 @@ class _HomeScaffoldState extends State<HomeScaffold> {
             height: width * 0.1,
             alignment: Alignment.centerLeft,
             child: Text(
-              'No 5, T. Nagar, Chennai',
+              'AMC Enclave, No. 6, Third Cross Street, Sterling Road',
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
@@ -69,10 +69,13 @@ class _HomeScaffoldState extends State<HomeScaffold> {
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: width * 0.01),
               child: ClipOval(
-                child: Image.asset(
-                  'images/Avatar1.png',
-                  height: width * 0.01,
-                  fit: BoxFit.fitHeight,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Image.network(
+                    'https://www.wallpapertip.com/wmimgs/159-1592363_full-hd-girls-hd.jpg',
+                    height: width * 0.01,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
