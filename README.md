@@ -1,7 +1,8 @@
 # RazorpayFTX-Hackathon
 
-App Links
-https://drive.google.com/drive/folders/1gmZqSOIlge55lcmmKNmst09bN29uVwUR?usp=sharing
+
+App APK - https://drive.google.com/drive/folders/1gmZqSOIlge55lcmmKNmst09bN29uVwUR?usp=sharing
+
 
 -> Introduction :
 
@@ -33,6 +34,7 @@ Thus, Small businesses create job opportunities and drive the country's economic
 
 
  - > App Credentials :
+
 
 Admin Passcode : 1234
 
