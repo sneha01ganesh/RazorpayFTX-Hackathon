@@ -28,7 +28,7 @@ class _AdminDeliveryState extends State<AdminDelivery> {
           padding: EdgeInsets.symmetric(
             horizontal: width * 0.05,
           ),
-          children: [
+          children: const [
             PendingDelivery(),
             CompletedDelivery(),
           ],

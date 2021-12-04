@@ -26,19 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SizedBox(height: width * 0.08),
                 Text(
-                  'Gowthama Home Food',
+                  'Shadow Galley',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: darkGreen,
-                    fontSize: width * 0.05,
-                    fontFamily: 'Nunito',
-                  ),
-                ),
-                Text(
-                  'Since 2001',
-                  style: TextStyle(
-                    color: darkGreen,
-                    fontSize: width * 0.043,
+                    fontSize: width * 0.055,
                   ),
                 ),
                 SizedBox(height: width * 0.07),
