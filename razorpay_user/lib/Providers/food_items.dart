@@ -290,32 +290,8 @@ class FoodItems with ChangeNotifier {
   final CollectionReference _foodStore =
       FirebaseFirestore.instance.collection('FoodItems');
 
-  Future<void> fetchOpenClose() async {
-    try {
-      List<bool> fetchedList = [];
-
-      DocumentSnapshot docSnap = await FirebaseFirestore.instance
-          .collection('Extras')
-          .doc('OpenClose')
-          .get();
-
-      fetchedList.add(docSnap.get('breakfast'));
-      fetchedList.add(docSnap.get('lunch'));
-      fetchedList.add(docSnap.get('dinner'));
-
-      _openClose = fetchedList;
-
-      notifyListeners();
-    } catch (e) {
-      // print(e);
-      rethrow;
-    }
-  }
-
   Future<void> fetchItems() async {
     try {
-      await fetchOpenClose();
-
       QuerySnapshot querySnap = await _foodStore.get();
       final List<FoodModel> loadedItems = [];
       for (var doc in querySnap.docs) {

@@ -38,6 +38,7 @@ dependencies:
   cloud_firestore: ^3.1.0
   firebase_storage: ^10.1.0
   razorpay_flutter: ^1.2.7
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:
