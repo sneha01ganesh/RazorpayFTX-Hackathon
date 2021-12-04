@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:razorpay_user/Functions/place_order_fn.dart';
 import 'package:razorpay_user/Helpers/buttons.dart';
 import 'package:razorpay_user/Helpers/colors.dart';
 import 'package:razorpay_user/Helpers/custom_icons.dart';
@@ -7,6 +9,8 @@ import 'package:razorpay_user/Helpers/style.dart';
 import 'package:razorpay_user/Providers/cart.dart';
 import 'package:razorpay_user/Providers/food_items.dart';
 import 'package:razorpay_user/Screens/home_screen.dart';
+import 'package:razorpay_user/Screens/order_success.dart';
+import 'package:razorpay_user/Widgets/dialogs.dart';
 import 'package:razorpay_user/Widgets/drawer_widget.dart';
 import 'package:razorpay_user/Widgets/home_scaffold.dart';
 
@@ -23,6 +27,104 @@ class _OrderSummaryState extends State<OrderSummary> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   bool? cod = false;
+  Dialogs dialogs = Dialogs();
+  late Razorpay _razorPay;
+
+  void proceedToOrder() {
+    if (cod == false) {
+      pay();
+    } else {
+      placeOrder();
+    }
+  }
+
+  Future<void> placeOrder({String? paymentId}) async {
+    dialogs.loading(context, content: 'Hold on until we place your order!');
+
+    await PlaceOrder()
+        .placeFood(
+      context,
+      address: 'No 5, T. Nagar, Chennai',
+      deliveryCharges: 30,
+      paymentId: paymentId,
+      paymentType: cod == false ? 'Online Payment' : null,
+    )
+        .then((value) {
+      dialogs.dismiss(context);
+
+      if (value == true) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (ctx) => const OrderSuccess(),
+          ),
+        );
+      }
+    }).catchError((error) {
+      dialogs.dismiss(context);
+      dialogs.error(context: context);
+    });
+  }
+
+  void pay() {
+    final cartProvider = Provider.of<Cart>(context, listen: false);
+
+    var options = {
+      'key': 'rzp_test_9e6pWOjruwRGwe',
+      'amount': (cartProvider.totalAmount + 30) * 100,
+      'name': 'John',
+      'description': 'Food Bill',
+      'prefill': {
+        'contact': 9876543218,
+      },
+      "notify": {
+        "sms": false,
+        "email": true,
+      },
+      'external': {
+        'wallets': ['paytm'],
+      }
+    };
+
+    try {
+      _razorPay.open(options);
+    } catch (e) {
+      // print(e);
+      dialogs.error(context: context);
+    }
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    await placeOrder(
+      paymentId: response.paymentId,
+    );
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    dialogs.display(
+        context, 'Failure', 'Your payment has been failed. Please try again');
+    // print(response.message);
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    // print('Wallet Name ${response.walletName}');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _razorPay = Razorpay();
+
+    _razorPay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorPay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorPay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _razorPay.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -197,7 +299,7 @@ class _OrderSummaryState extends State<OrderSummary> {
                       SizedBox(width: width * 0.05),
                       SolidButton(
                         name: cod == true ? 'Proceed' : 'Proceed to Pay',
-                        onPressed: () async {},
+                        onPressed: proceedToOrder,
                       ),
                     ],
                   ),
