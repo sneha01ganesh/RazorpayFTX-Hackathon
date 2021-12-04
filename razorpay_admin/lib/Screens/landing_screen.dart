@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:razorpay_admin/Helpers/colors.dart';
+import 'package:razorpay_admin/Screens/DeliveryPartner/login_screen.dart';
 import 'package:razorpay_admin/Screens/admin_passcode.dart';
 import 'package:razorpay_admin/Widgets/dialogs.dart';
 
@@ -39,7 +40,7 @@ class _LandingPageState extends State<LandingPage> {
         children: [
           Container(
             alignment: Alignment.center,
-            width: width * 0.8,
+            width: width * 0.4,
             child: Image.asset('images/Logo.png'),
           ),
           SizedBox(height: width * 0.1),
@@ -94,12 +95,12 @@ class _LandingPageState extends State<LandingPage> {
                 SizedBox(height: width * 0.2),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => LoginScreen(),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
                   },
                   child: Container(
                     alignment: Alignment.bottomRight,

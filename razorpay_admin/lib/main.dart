@@ -1,5 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:razorpay_admin/Providers/delivery_orders.dart';
+import 'package:razorpay_admin/Screens/DeliveryPartner/delivery_details_page.dart';
+import 'package:razorpay_admin/Screens/DeliveryPartner/delivery_home.dart';
 import 'package:razorpay_admin/Screens/home.dart';
 import 'package:razorpay_admin/Screens/landing_screen.dart';
 
@@ -30,15 +34,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: kPrimaryColor,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => DeliveryOrders(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: kPrimaryColor,
+        ),
+        initialRoute: LandingPage.pg,
+        routes: {
+          Home.pg: (ctx) => const Home(),
+          LandingPage.pg: (ctx) => const LandingPage(),
+          DeliveryHome.pg: (ctx) => const DeliveryHome(),
+          DeliveryOrderPage.pg: (ctx) => const DeliveryOrderPage(),
+        },
       ),
-      initialRoute: LandingPage.pg,
-      routes: {
-        Home.pg: (ctx) => const Home(),
-        LandingPage.pg: (ctx) => const LandingPage(),
-      },
     );
   }
 }

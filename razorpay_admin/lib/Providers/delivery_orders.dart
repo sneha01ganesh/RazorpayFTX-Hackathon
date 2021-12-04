@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
-import 'package:razorpay_user/Models/order_item.dart';
+import 'package:flutter/material.dart';
+import 'package:razorpay_admin/Models/order_item.dart';
+import 'package:razorpay_admin/Helpers/global.dart' as global;
 
-class Orders with ChangeNotifier {
+class DeliveryOrders with ChangeNotifier {
   List<OrderItem> _items = [
     OrderItem(
       id: '1',
@@ -64,63 +65,55 @@ class Orders with ChangeNotifier {
     return _items.firstWhere((order) => order.id == id);
   }
 
-  int totalBill(String id) {
-    int tot = 0;
-
-    final order = findById(id);
-
-    order.foodDetails!.map((elements) {
-      num amount = elements['price'] * elements['quantity'];
-      tot += amount.toInt();
-    });
-
-    return tot;
-  }
-
-  void placeNewOrder(OrderItem orderItem) {
-    _items.insert(0, orderItem);
-
-    notifyListeners();
-  }
-
   bool _listFetched = false;
   bool get listFetched => _listFetched;
 
-  final CollectionReference _firestore =
+  final CollectionReference _orderStore =
       FirebaseFirestore.instance.collection('Orders');
 
-  Future<void> fetchOrders(String uid) async {
+  Future<void> fetchOrders() async {
     try {
-      QuerySnapshot querySnap = await _firestore
-          .where('uid', isEqualTo: uid)
-          .orderBy('dateTime', descending: true)
-          .limit(30)
+      QuerySnapshot querySnap = await _orderStore
+          .where('deliveryPartnerId', isEqualTo: global.deliveryId)
           .get();
-
       final List<OrderItem> loadedItems = [];
 
-      for (var doc in querySnap.docs) {
+      querySnap.docs.forEach((doc) {
         final data = doc.data() as Map;
 
-        final orderItem = OrderItem.fromJson(data);
+        OrderItem item = OrderItem.fromJson(data);
 
-        loadedItems.add(orderItem);
-      }
+        loadedItems.add(item);
+      });
 
       _items = loadedItems;
       _listFetched = true;
 
       notifyListeners();
-    } catch (error) {
-      // print(error);
+    } catch (e) {
       rethrow;
     }
   }
 
-  void reset() {
-    _items = [];
-    _listFetched = false;
+  Future<void> orderDelivered(String id) async {
+    try {
+      final order = findById(id);
 
-    notifyListeners();
+      order.status = 'Delivered';
+      order.paymentStatus = 'Paid';
+      notifyListeners();
+
+      // await _orderStore.doc(id).update({
+      //   'status': 'Delivered',
+      //   'paymentStatus': 'Paid',
+      // }).then((_) {
+      //   order.status = 'Delivered';
+      //   order.paymentStatus = 'Paid';
+
+      //   notifyListeners();
+      // });
+    } catch (e) {
+      rethrow;
+    }
   }
 }
