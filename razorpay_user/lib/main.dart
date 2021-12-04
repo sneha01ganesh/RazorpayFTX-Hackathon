@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_user/Providers/cart.dart';
 import 'package:razorpay_user/Providers/food_items.dart';
+import 'package:razorpay_user/Providers/orders.dart';
 import 'package:razorpay_user/Screens/home_screen.dart';
+import 'package:razorpay_user/Screens/order_summary.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +26,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Cart(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => Orders(),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -32,6 +37,7 @@ class MyApp extends StatelessWidget {
         initialRoute: Home.pg,
         routes: {
           Home.pg: (ctx) => const Home(),
+          OrderSummary.pg: (ctx) => const OrderSummary(),
         },
       ),
     );

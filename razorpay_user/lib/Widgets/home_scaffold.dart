@@ -4,6 +4,7 @@ import 'package:razorpay_user/Helpers/colors.dart';
 import 'package:razorpay_user/Helpers/custom_icons.dart';
 import 'package:razorpay_user/Providers/cart.dart';
 import 'package:razorpay_user/Screens/home_screen.dart';
+import 'package:razorpay_user/Screens/order_summary.dart';
 
 //ignore: must_be_immutable
 class HomeScaffold extends StatefulWidget {
@@ -112,7 +113,14 @@ class _HomeScaffoldState extends State<HomeScaffold> {
                 widget.ordersIcon == true
                     ? Consumer<Cart>(
                         builder: (context, cart, child) => GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const OrderSummary(),
+                              ),
+                            );
+                          },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,

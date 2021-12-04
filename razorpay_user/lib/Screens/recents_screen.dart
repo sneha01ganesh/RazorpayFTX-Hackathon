@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:razorpay_user/Helpers/colors.dart';
+import 'package:razorpay_user/Providers/orders.dart';
 import 'package:razorpay_user/Widgets/recents_card.dart';
 
 class Recents extends StatefulWidget {
@@ -12,9 +14,13 @@ class Recents extends StatefulWidget {
 }
 
 class _RecentsState extends State<Recents> {
+  List _recentsList = [];
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final provider = Provider.of<Orders>(context);
+    _recentsList = provider.items;
 
     return Column(
       children: [
@@ -34,9 +40,9 @@ class _RecentsState extends State<Recents> {
               parent: AlwaysScrollableScrollPhysics(),
             ),
             shrinkWrap: true,
-            itemCount: 10,
+            itemCount: _recentsList.length,
             itemBuilder: (context, index) {
-              return RecentsCard();
+              return RecentsCard(_recentsList[index]);
             },
           ),
         ),
