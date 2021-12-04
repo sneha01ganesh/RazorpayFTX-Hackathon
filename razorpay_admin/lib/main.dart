@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_admin/Providers/admin_orders.dart';
 import 'package:razorpay_admin/Providers/delivery_orders.dart';
+import 'package:razorpay_admin/Providers/delivery_persons.dart';
 import 'package:razorpay_admin/Providers/food_items.dart';
 import 'package:razorpay_admin/Screens/DeliveryPartner/delivery_details_page.dart';
 import 'package:razorpay_admin/Screens/DeliveryPartner/delivery_home.dart';
@@ -46,6 +47,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => AdminOrders(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DeliveryPersons(),
         ),
       ],
       child: MaterialApp(

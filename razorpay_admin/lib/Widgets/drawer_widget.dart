@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:razorpay_admin/Helpers/colors.dart';
+import 'package:razorpay_admin/Screens/delivery_partner_list.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -86,7 +87,14 @@ class DrawerWidget extends StatelessWidget {
                         fontSize: width * 0.042,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => const DeliveryPartners(),
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(height: width * 0.05),
                   InkWell(
